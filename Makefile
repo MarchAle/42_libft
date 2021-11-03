@@ -6,11 +6,11 @@
 #    By: amarchal <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/23 12:28:09 by amarchal          #+#    #+#              #
-#    Updated: 2021/09/23 12:28:22 by amarchal         ###   ########lyon.fr    #
+#    Updated: 2021/11/03 10:49:06 by amarchal         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS=./srcs/ft_putchar.c ./srcs/ft_swap.c ./srcs/ft_putstr.c ./srcs/ft_strlen.c ./srcs/ft_strcmp.c
+SRCS=*.c
 OBJS=$(SRCS:.c=.o)
 HDRS=./includes/
 CC=gcc

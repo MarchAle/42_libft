@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 16:37:45 by amarchal          #+#    #+#             */
-/*   Updated: 2021/11/03 10:13:57 by amarchal         ###   ########lyon.fr   */
+/*   Created: 2021/11/03 14:53:04 by amarchal          #+#    #+#             */
+/*   Updated: 2021/11/03 15:59:20 by amarchal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+int	ft_atoi(const char *str)
 {
 	int	i;
+	int	sign;
+	int	number;
 
 	i = 0;
-	if (c == 0)
+	sign = 1;
+	number = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		while (s[i])
-			i++;
-		return ((char *)&s[i]);
-	}
-	while (s[i])
-	{
-		if (s[i] == c)
-			return ((char *)&s[i]);
+		if (str[i] == '-')
+			sign *= -1;
 		i++;
 	}
-	return (0);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		number *= 10;
+		number += str[i] - 48;
+		i++;
+	}
+	return (number * sign);
 }

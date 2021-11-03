@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 16:37:45 by amarchal          #+#    #+#             */
-/*   Updated: 2021/11/03 10:13:57 by amarchal         ###   ########lyon.fr   */
+/*   Created: 2021/09/06 11:19:55 by amarchal          #+#    #+#             */
+/*   Updated: 2021/11/03 13:32:54 by amarchal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
-{
-	int	i;
+#include <stddef.h>
 
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	unsigned int	src_size;
+	unsigned int	i;
+
+	src_size = 0;
 	i = 0;
-	if (c == 0)
+	while (src[src_size])
+		src_size++;
+	if (dstsize == 0)
+		return (src_size);
+	while (src[i] && i < dstsize - 1)
 	{
-		while (s[i])
-			i++;
-		return ((char *)&s[i]);
-	}
-	while (s[i])
-	{
-		if (s[i] == c)
-			return ((char *)&s[i]);
+		dst[i] = src[i];
 		i++;
 	}
-	return (0);
+	dst[i] = '\0';
+	return (src_size);
 }
