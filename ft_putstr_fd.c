@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 15:16:11 by amarchal          #+#    #+#             */
-/*   Updated: 2021/11/08 18:10:39 by amarchal         ###   ########lyon.fr   */
+/*   Created: 2021/11/08 14:12:16 by amarchal          #+#    #+#             */
+/*   Updated: 2021/11/08 14:51:04 by amarchal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stddef.h>
+#include <unistd.h>
 
-void	*ft_calloc(size_t count, size_t size)
+void	ft_putstr_fd(char *s, int fd)
 {
-	char	*buff;
-	size_t	i;
+	int	i;
 
-	i = count * size;
-	buff = malloc(i);
-	if (!buff)
-		return (NULL);
-	while (i > 0)
+	i = 0;
+	while (s[i])
 	{
-		*buff++ = 0;
-		i--;
+		write(fd, &s[i], 1);
+		i++;
 	}
-	return (buff);
 }
