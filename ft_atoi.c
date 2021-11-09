@@ -6,15 +6,15 @@
 /*   By: amarchal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 14:53:04 by amarchal          #+#    #+#             */
-/*   Updated: 2021/11/03 15:59:20 by amarchal         ###   ########lyon.fr   */
+/*   Updated: 2021/11/09 13:13:53 by amarchal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	number;
+	int			i;
+	int			sign;
+	long int	number;
 
 	i = 0;
 	sign = 1;

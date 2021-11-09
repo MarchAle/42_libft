@@ -6,11 +6,11 @@
 /*   By: amarchal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 11:37:03 by amarchal          #+#    #+#             */
-/*   Updated: 2021/11/07 16:41:48 by amarchal         ###   ########lyon.fr   */
+/*   Updated: 2021/11/09 18:03:15 by amarchal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h" 
 
 int	ft_wordnbr(char *s, char c)
 {
@@ -56,7 +56,7 @@ char	**ft_filltab(char *s, char c, char **tab)
 		if ((s[i] != c && s[i - 1] == c) || (i == 0 && s[i] != c))
 		{
 			wordsize = 0;
-			while (s[i + wordsize] != c)
+			while (s[i + wordsize] != c && s[i + wordsize])
 				wordsize++;
 			tab[j] = malloc(sizeof(char) * (wordsize + 1));
 			if (!tab[j])
@@ -83,3 +83,21 @@ char	**ft_split(char const *s, char c)
 	tab = ft_filltab((char *)s, c, tab);
 	return (tab);
 }
+
+#include <stdio.h>
+
+int	main(int ac, char **av)
+{
+	(void)ac;
+	int	i;
+	char **test;
+
+	i = 0;
+	test = ft_split(av[1], av[2][0]);
+	while (test[i])
+	{
+		printf("%s\n", test[i]);
+		i++;
+	}
+}
+
