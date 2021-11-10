@@ -6,11 +6,11 @@
 /*   By: amarchal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 16:42:42 by amarchal          #+#    #+#             */
-/*   Updated: 2021/11/07 18:30:12 by amarchal         ###   ########lyon.fr   */
+/*   Updated: 2021/11/10 11:49:47 by amarchal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_fillstr(char *str, int n, int wordsize)
 {
@@ -22,12 +22,13 @@ char	*ft_fillstr(char *str, int n, int wordsize)
 		str[0] = '-';
 		nbr *= -1;
 	}
-	str[wordsize--] = '\0';
+	str[wordsize] = '\0';
+	wordsize--;
 	if (nbr == 0)
 		str[wordsize] = '0';
 	while (nbr > 0)
 	{
-		str[wordsize - 1] = nbr % 10 + '0';
+		str[wordsize] = nbr % 10 + '0';
 		nbr /= 10;
 		wordsize--;
 	}
@@ -42,9 +43,9 @@ char	*ft_itoa(int n)
 	long int	nbr;
 
 	i = 0;
-	wordsize = 1;
+	wordsize = 0;
 	nbr = n;
-	if (nbr < 0)
+	if (nbr <= 0)
 	{
 		nbr *= -1;
 		wordsize++;

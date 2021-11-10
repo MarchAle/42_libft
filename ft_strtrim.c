@@ -6,7 +6,7 @@
 /*   By: amarchal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 10:34:18 by amarchal          #+#    #+#             */
-/*   Updated: 2021/11/09 17:09:59 by amarchal         ###   ########lyon.fr   */
+/*   Updated: 2021/11/10 12:09:44 by amarchal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,27 @@ int	ft_isinset(char c, char *set)
 	return (0);
 }
 
+char	*ft_filltrim(char *trim, size_t start, size_t i, char const *s1)
+{
+	size_t	j;
+
+	j = 0;
+	while (start <= i)
+		trim[j++] = s1[start++];
+	trim[j] = '\0';
+	return (trim);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
-	size_t	j;
 	size_t	start;
 	char	*trim;
 
 	i = 0;
-	j = 0;
 	start = 0;
+	if (s1 == NULL)
+		return (NULL);
 	while (ft_isinset(s1[i], (char *)set))
 		i++;
 	start = i;
@@ -49,8 +60,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	trim = malloc(sizeof(char) * (i - start + 2));
 	if (!trim)
 		return (NULL);
-	while (start <= i)
-		trim[j++] = s1[start++];
-	trim[j] = '\0';
+	trim = ft_filltrim(trim, start, i, s1);
 	return (trim);
 }

@@ -6,7 +6,7 @@
 /*   By: amarchal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 18:31:54 by amarchal          #+#    #+#             */
-/*   Updated: 2021/11/08 11:47:48 by amarchal         ###   ########lyon.fr   */
+/*   Updated: 2021/11/10 11:51:09 by amarchal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*str;
 
 	i = 0;
+	if (s == NULL)
+		return (NULL);
 	while (s[i])
 		i++;
 	str = malloc(sizeof(char) * (i + 1));

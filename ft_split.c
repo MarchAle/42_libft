@@ -6,7 +6,7 @@
 /*   By: amarchal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 11:37:03 by amarchal          #+#    #+#             */
-/*   Updated: 2021/11/09 18:03:15 by amarchal         ###   ########lyon.fr   */
+/*   Updated: 2021/11/10 18:17:16 by amarchal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,20 @@ int	ft_wordnbr(char *s, char c)
 {
 	int	i;
 	int	nbr;
+	int	count;
 
-	i = 1;
+	i = 0;
 	nbr = 1;
-	if (s[0] == c)
-		nbr--;
+	count = 0;
 	while (s[i])
 	{
-		if (s[i] != c && s[i - 1] == c)
+		if (s[i] != c)
+			count++;
+		else if (count > 0)
+		{
 			nbr++;
+			count = 0;
+		}
 		i++;
 	}
 	return (nbr);
@@ -37,13 +42,13 @@ void	ft_fillword(char *s, char *tab, int i, int wordsize)
 	k = 0;
 	while (k < wordsize)
 	{
-		tab[k] = s[i + k];
+		tab[k] = s[i - wordsize + k];
 		k++;
 	}
 	tab[k] = '\0';
 }
 
-char	**ft_filltab(char *s, char c, char **tab)
+static char	**ft_filltab(char *s, char c, char **tab)
 {
 	int	i;
 	int	j;
@@ -51,19 +56,20 @@ char	**ft_filltab(char *s, char c, char **tab)
 
 	i = 0;
 	j = 0;
+	wordsize = 0;
 	while (s[i])
 	{
-		if ((s[i] != c && s[i - 1] == c) || (i == 0 && s[i] != c))
+		if ((s[i] != c))
+			wordsize++;
+		else if (wordsize > 0 || !s[i + 1])
 		{
-			wordsize = 0;
-			while (s[i + wordsize] != c && s[i + wordsize])
-				wordsize++;
-			tab[j] = malloc(sizeof(char) * (wordsize + 1));
+			tab[j] = ft_calloc(sizeof(char), wordsize + 1);
 			if (!tab[j])
 				return (NULL);
 			ft_fillword(s, tab[j], i, wordsize);
 			j++;
-			i += wordsize;
+		//	i += (wordsize - 1);
+			wordsize = 0;
 		}
 		i++;
 	}
@@ -76,22 +82,21 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	char	**tab;
 
+	if (s == NULL)
+		return (NULL);
 	i = 0;
-	tab = malloc(sizeof(char *) * (ft_wordnbr((char *)s, c) + 1));
+	tab = ft_calloc(sizeof(char *), ft_wordnbr((char *)s, c) + 1);
 	if (!tab)
 		return (NULL);
 	tab = ft_filltab((char *)s, c, tab);
 	return (tab);
 }
 
-#include <stdio.h>
-
 int	main(int ac, char **av)
 {
 	(void)ac;
 	int	i;
 	char **test;
-
 	i = 0;
 	test = ft_split(av[1], av[2][0]);
 	while (test[i])
@@ -100,4 +105,3 @@ int	main(int ac, char **av)
 		i++;
 	}
 }
-
