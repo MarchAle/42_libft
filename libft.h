@@ -6,7 +6,7 @@
 /*   By: amarchal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by amarchal          #+#    #+#             */
-/*   Updated: 2021/11/10 13:57:19 by amarchal         ###   ########lyon.fr   */
+/*   Updated: 2021/11/11 14:35:14 by amarchal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
 int		ft_wordnbr(char *s, char c);
 char	*ft_strchr(const char *s, int c);
-int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strdup(const char *s1);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strjoin(char const *s1, char const *s2);
