@@ -6,11 +6,11 @@
 #    By: amarchal <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/23 12:28:09 by amarchal          #+#    #+#              #
-#    Updated: 2021/11/11 14:37:22 by amarchal         ###   ########lyon.fr    #
+#    Updated: 2021/11/11 18:07:22 by amarchal         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS=	ft_bzero.c			\
+SRCS =	ft_bzero.c			\
 		ft_calloc.c			\
 	   	ft_isalnum.c		\
 	   	ft_isalpha.c 		\
@@ -43,18 +43,22 @@ SRCS=	ft_bzero.c			\
 	   	ft_substr.c			\
 	   	ft_tolower.c		\
 		ft_atoi.c			\
-	   	ft_toupper.c		
+	   	ft_toupper.c		\
+		ft_lstnew.c			\
+		ft_lstadd_front.c
 
-OBJS=$(SRCS:.c=.o)
-HDRS=./libft.h
-CC=gcc
-CFLAGS=-Wall -Wextra -Werror
-NAME=libft.a
+OBJS = $(SRCS:.c=.o)
+HDRS = libft.h
+CC = clang
+CFLAGS = -Wall -Wextra -Werror
+NAME = libft.a
 
 all:	$(NAME)
 
+bonus:	all
+
 $(NAME): $(OBJS)
-		ar rcs libft.a $(OBJS)
+		ar rcs $(NAME) $(OBJS)
 		
 clean:
 		rm -rf $(OBJS)
@@ -64,7 +68,7 @@ fclean:	clean
 
 re:		fclean all
 
-.c.o: $(SRCS)
-	$(CC) -c $(CFLAGS) -I $(HDRS) $< -o $(<:.c=.o)
+%.o : %.c $(HDRS)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 .PHONY:	all clean fclean re 
