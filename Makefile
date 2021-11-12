@@ -6,7 +6,7 @@
 #    By: amarchal <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/23 12:28:09 by amarchal          #+#    #+#              #
-#    Updated: 2021/11/12 14:14:46 by amarchal         ###   ########lyon.fr    #
+#    Updated: 2021/11/12 14:40:19 by amarchal         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,8 @@ SRCS =	ft_bzero.c			\
 		ft_lstadd_back.c	\
 		ft_lstdelone.c		\
 		ft_lstclear.c		\
-		ft_lstiter.c
+		ft_lstiter.c		\
+		ft_lstmap.c
 
 OBJS = $(SRCS:.c=.o)
 HDRS = libft.h
