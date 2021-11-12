@@ -6,7 +6,7 @@
 /*   By: amarchal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 11:37:03 by amarchal          #+#    #+#             */
-/*   Updated: 2021/11/11 14:15:14 by amarchal         ###   ########lyon.fr   */
+/*   Updated: 2021/11/12 18:16:10 by amarchal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,22 +59,24 @@ static char	**ft_filltab(char *s, char c, char **tab)
 	int	j;
 	int	wordsize;
 
-	i = 0;
+	i = -1;
 	j = 0;
 	wordsize = 0;
-	while (s[i])
+	while (s[++i])
 	{
 		if ((s[i] != c))
 			wordsize++;
 		else if (wordsize > 0)
 		{
 			tab[j] = ft_fillword(s, tab[j], i, wordsize);
-			j++;
+			if (tab[j++] == NULL)
+				return (NULL);
 			wordsize = 0;
 		}
 		if (!s[i + 1] && wordsize > 0)
 			tab[j] = ft_fillword(s, tab[j], i + 1, wordsize);
-		i++;
+		if (!s[i + 1] && wordsize > 0 && tab[j] == NULL)
+			return (NULL);
 	}
 	return (tab);
 }
@@ -89,5 +91,12 @@ char	**ft_split(char const *s, char c)
 	if (!tab)
 		return (NULL);
 	tab = ft_filltab((char *)s, c, tab);
+	if (!tab)
+	{
+		while (*tab)
+			free(*tab++);
+		free(tab);
+		return (NULL);
+	}
 	return (tab);
 }
