@@ -6,13 +6,13 @@
 /*   By: amarchal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 10:34:18 by amarchal          #+#    #+#             */
-/*   Updated: 2021/11/10 12:09:44 by amarchal         ###   ########lyon.fr   */
+/*   Updated: 2021/11/13 13:16:16 by amarchal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isinset(char c, char *set)
+static int	ft_isinset(char c, char *set)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ int	ft_isinset(char c, char *set)
 	return (0);
 }
 
-char	*ft_filltrim(char *trim, size_t start, size_t i, char const *s1)
+static char	*ft_filltrim(char *trim, size_t start, size_t i, char const *s1)
 {
 	size_t	j;
 

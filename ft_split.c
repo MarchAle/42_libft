@@ -6,13 +6,13 @@
 /*   By: amarchal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 11:37:03 by amarchal          #+#    #+#             */
-/*   Updated: 2021/11/12 18:16:10 by amarchal         ###   ########lyon.fr   */
+/*   Updated: 2021/11/13 13:13:03 by amarchal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h" 
 
-int	ft_wordnbr(char *s, char c)
+static int	ft_wordnbr(char *s, char c)
 {
 	int	i;
 	int	nbr;
@@ -37,7 +37,7 @@ int	ft_wordnbr(char *s, char c)
 	return (nbr);
 }
 
-char	*ft_fillword(char *s, char *tab, int i, int wordsize)
+static char	*ft_fillword(char *s, char *tab, int i, int wordsize)
 {
 	int	k;
 

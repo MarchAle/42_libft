@@ -6,7 +6,7 @@
 #    By: amarchal <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/23 12:28:09 by amarchal          #+#    #+#              #
-#    Updated: 2021/11/12 14:40:19 by amarchal         ###   ########lyon.fr    #
+#    Updated: 2021/11/13 13:47:18 by amarchal         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,9 +56,12 @@ SRCS =	ft_bzero.c			\
 
 OBJS = $(SRCS:.c=.o)
 HDRS = libft.h
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
+
+%.o : %.c $(HDRS)
+	$(CC) $(CFLAGS) -c $< -o $@ 
 
 all:	$(NAME)
 
@@ -75,7 +78,4 @@ fclean:	clean
 
 re:		fclean all
 
-%.o : %.c $(HDRS)
-	$(CC) $(CFLAGS) -c -o $@ $<
-
-.PHONY:	all clean fclean re 
+.PHONY:	all clean fclean re bonus 
