@@ -6,7 +6,7 @@
 #    By: amarchal <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/23 12:28:09 by amarchal          #+#    #+#              #
-#    Updated: 2021/11/13 13:47:18 by amarchal         ###   ########lyon.fr    #
+#    Updated: 2022/01/13 15:23:23 by amarchal         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRCS =	ft_bzero.c			\
 		ft_lstadd_front.c	\
 		ft_lstsize.c		\
 		ft_lstlast.c		\
+		ft_lstbeforelast.c	\
 		ft_lstadd_back.c	\
 		ft_lstdelone.c		\
 		ft_lstclear.c		\
